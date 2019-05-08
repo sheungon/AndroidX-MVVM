@@ -18,11 +18,10 @@ open class SingletonHolder<InstanceClass>(_constructor: () -> InstanceClass) {
     @Volatile
     private var instance: InstanceClass? = null
 
-    @Synchronized
     fun getInstance(): InstanceClass =
-        instance ?: run {
-            val newInstant = instanceConstructor()
-            instance = newInstant
-            newInstant
+        instance ?: synchronized(this) {
+            instance ?: instanceConstructor().also {
+                instance = it
+            }
         }
 }
