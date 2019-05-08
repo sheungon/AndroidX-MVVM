@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.activity.AppHelpfulDataBindingActivity
-import com.sotwtm.support.dialog.AppHelpfulDialogFragment
+import com.sotwtm.support.fragment.dialog.AppHelpfulDialogFragment
 import com.sotwtm.support.fragment.AppHelpfulFragment
 import java.lang.ref.WeakReference
 

@@ -18,8 +18,8 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.snackbar.Snackbar
 import com.sotwtm.support.R
 import com.sotwtm.support.SotwtmSupportLib
-import com.sotwtm.support.dialog.LoadingDialogFragment
-import com.sotwtm.support.dialog.StringOrStringRes
+import com.sotwtm.support.fragment.dialog.LoadingDialogFragment
+import com.sotwtm.support.fragment.dialog.StringOrStringRes
 import com.sotwtm.support.util.*
 import com.sotwtm.support.util.locale.setAppLocale
 import com.sotwtm.util.Log
@@ -186,9 +186,8 @@ abstract class AppHelpfulActivity
         try {
             if (daggerEnabled) AndroidInjection.inject(this)
         } catch (e: Exception) {
-            if (SotwtmSupportLib.enableDaggerErrorLog) {
-                Log.e("Disable dagger error log by SotwtmSupportLib.enableDaggerErrorLog", e)
-            }
+            Log.e("If dagger in not needed, disable dagger by setting daggerEnabled.")
+            throw e
         }
 
         super.onCreate(savedInstanceState)

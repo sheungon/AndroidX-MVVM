@@ -12,7 +12,6 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.sotwtm.support.R
-import com.sotwtm.support.SotwtmSupportLib
 import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.activity.IOverridePendingTransition
 import com.sotwtm.support.util.SnackbarDuration
@@ -87,9 +86,8 @@ abstract class AppHelpfulFragment : Fragment(), HasSupportFragmentInjector {
         try {
             if (daggerEnabled) AndroidSupportInjection.inject(this)
         } catch (e: Exception) {
-            if (SotwtmSupportLib.enableDaggerErrorLog) {
-                Log.e("Disable dagger error log by SotwtmSupportLib.enableDaggerErrorLog", e)
-            }
+            Log.e("If dagger in not needed, disable dagger by setting daggerEnabled.")
+            throw e
         }
         super.onAttach(context)
     }

@@ -1,4 +1,4 @@
-package com.sotwtm.support.dialog
+package com.sotwtm.support.fragment.dialog
 
 import android.content.Context
 import android.os.Bundle

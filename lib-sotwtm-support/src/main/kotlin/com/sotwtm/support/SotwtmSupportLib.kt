@@ -9,8 +9,7 @@ import com.sotwtm.support.SotwtmSupportLib.Companion.init
 import com.sotwtm.support.activity.OnAppLocaleChangedListener
 import com.sotwtm.support.util.locale.AppHelpfulLocaleUtil
 import com.sotwtm.support.util.locale.setAppLocale
-import com.sotwtm.support.util.locale.unify
-import com.sotwtm.support.util.singleton.SingletonHolder1
+import com.sotwtm.support.util.singleton.SingletonHolder2
 import java.util.*
 import javax.inject.Inject
 
@@ -19,7 +18,10 @@ import javax.inject.Inject
  * */
 @SuppressLint("CommitPrefEdits")
 class SotwtmSupportLib
-private constructor(_application: Application) {
+private constructor(
+    _application: Application,
+    _supportedLocales: List<Locale> = emptyList()
+) {
 
     @Inject
     internal lateinit var sharedPreferences: SharedPreferences
@@ -40,6 +42,7 @@ private constructor(_application: Application) {
     init {
         DaggerSotwtmSupportComponent.builder()
             .application(_application)
+            .defaultSupportLocale(_supportedLocales)
             .build()
             .inject(this)
         _application.setAppLocale(requireNotNull(appLocale.get()))
@@ -77,21 +80,8 @@ private constructor(_application: Application) {
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(listener)
     }
 
-    companion object : SingletonHolder1<SotwtmSupportLib, Application>(::SotwtmSupportLib) {
-        /**
-         * Set the default supported locales list.
-         * Empty list means supported all locales.
-         * */
-        @JvmStatic
-        var defaultSupportedLocales: List<Locale> = emptyList()
-            @Synchronized
-            set(value) {
-                field = value.map { it.unify() }
-            }
-
-        @JvmStatic
-        var enableDaggerErrorLog = true
-
+    companion object :
+        SingletonHolder2<SotwtmSupportLib, Application, List<Locale>>(::SotwtmSupportLib) {
         const val PREF_KEY_APP_LOCALE = "AppLocale"
         const val PREF_KEY_SUPPORTED_LOCALES = "SupportedLocales"
         const val SEPARATOR_LOCALE = ","

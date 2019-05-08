@@ -18,9 +18,7 @@ class ExampleApplication : DaggerApplication() {
         Log.logLevel = if (BuildConfig.DEBUG) Log.VERBOSE else Log.NONE
         Log.defaultLogTag = "SotwtmExample"
 
-        SotwtmSupportLib.enableDaggerErrorLog = BuildConfig.DEBUG
-        SotwtmSupportLib.defaultSupportedLocales = DEFAULT_SUPPORTED_LOCALES
-        SotwtmSupportLib.init(this)
+        SotwtmSupportLib.init(this, DEFAULT_SUPPORTED_LOCALES)
     }
 
     override fun applicationInjector(): AndroidInjector<ExampleApplication> =

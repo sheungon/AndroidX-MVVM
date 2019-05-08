@@ -10,6 +10,7 @@ import com.sotwtm.support.util.locale.unify
 import dagger.Module
 import dagger.Provides
 import java.util.*
+import kotlin.collections.ArrayList
 
 @Module
 internal class SotwtmSupportBaseModule {
@@ -28,7 +29,8 @@ internal class SotwtmSupportBaseModule {
     @Provides
     fun appLocale(
         sharedPreferences: SharedPreferences,
-        editor: SharedPreferences.Editor
+        editor: SharedPreferences.Editor,
+        @SotwtmSupportComponent.DefaultSupportedLocales defaultSupportedLocales: List<Locale>
     ): ObservableField<Locale> =
         object : ObservableField<Locale>() {
             @Synchronized
@@ -38,7 +40,8 @@ internal class SotwtmSupportBaseModule {
                     if (languageTags.isEmpty) AppHelpfulLocaleUtil.getDefaultLangFromSystemSetting(
                         supportedLocales(
                             sharedPreferences,
-                            editor
+                            editor,
+                            defaultSupportedLocales
                         ).get()
                     )
                     else languageTags[0]
@@ -46,7 +49,8 @@ internal class SotwtmSupportBaseModule {
                     ?: AppHelpfulLocaleUtil.getDefaultLangFromSystemSetting(
                         supportedLocales(
                             sharedPreferences,
-                            editor
+                            editor,
+                            defaultSupportedLocales
                         ).get()
                     )
 
@@ -69,16 +73,23 @@ internal class SotwtmSupportBaseModule {
     @Provides
     fun supportedLocales(
         sharedPreferences: SharedPreferences,
-        editor: SharedPreferences.Editor
+        editor: SharedPreferences.Editor,
+        @SotwtmSupportComponent.DefaultSupportedLocales defaultSupportedLocales: List<Locale>
     ): ObservableField<List<Locale>> =
         object : ObservableField<List<Locale>>(emptyList()) {
             @Synchronized
             override fun get(): List<Locale> {
                 val supportedLocalesString =
                     sharedPreferences.getString(SotwtmSupportLib.PREF_KEY_SUPPORTED_LOCALES, null)
-                        ?: return SotwtmSupportLib.defaultSupportedLocales
-                return supportedLocalesString.split(SotwtmSupportLib.SEPARATOR_LOCALE).mapNotNull {
-                    LocaleListCompat.forLanguageTags(it).get(0)
+                        ?: return defaultSupportedLocales
+                return supportedLocalesString.split(SotwtmSupportLib.SEPARATOR_LOCALE).map {
+                    LocaleListCompat.forLanguageTags(it)
+                }.flatMap {
+                    ArrayList<Locale>().apply {
+                        for (i in 0 until it.size()) {
+                            add(it.get(i))
+                        }
+                    }
                 }
             }
 
@@ -92,7 +103,13 @@ internal class SotwtmSupportBaseModule {
                     notifyChange()
                 } else {
                     val currentAppLocale =
-                        requireNotNull(appLocale(sharedPreferences, editor).get())
+                        requireNotNull(
+                            appLocale(
+                                sharedPreferences,
+                                editor,
+                                defaultSupportedLocales
+                            ).get()
+                        )
                     // Check if the current locale is in the new supported locale list
                     if (!newLocales.any { AppHelpfulLocaleUtil.equals(currentAppLocale, it) }) {
                         // If the current locale is not supported anymore, update current locale to system best matched
@@ -118,6 +135,6 @@ internal class SotwtmSupportBaseModule {
         }
 
     companion object {
-        const val DEFAULT_SHARED_PREF_FILE = "sotwtm-support-lib"
+        const val DEFAULT_SHARED_PREF_FILE = "sotwtm-androidx-mvvm"
     }
 }

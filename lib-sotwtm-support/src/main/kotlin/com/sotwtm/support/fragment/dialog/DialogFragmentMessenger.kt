@@ -1,4 +1,4 @@
-package com.sotwtm.support.dialog
+package com.sotwtm.support.fragment.dialog
 
 import android.widget.Toast
 import androidx.annotation.StringRes

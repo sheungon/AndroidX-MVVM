@@ -10,7 +10,7 @@
 
         <variable
             name="loadingMsg"
-            type="com.sotwtm.support.dialog.StringOrStringRes" />
+            type="com.sotwtm.support.fragment.dialog.StringOrStringRes" />
     </data>
 
     <LinearLayout

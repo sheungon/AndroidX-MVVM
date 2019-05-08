@@ -26,7 +26,7 @@ open class SingletonHolder2<InstanceClass, Arg0Class, Arg1Class>(_constructor: (
         }
 
     fun getInstance(): InstanceClass =
-        instance ?: throw ExceptionInInitializerError("This class not yet initialized.")
+        instance ?: throw ExceptionInInitializerError("This class not yet initialized")
 
     /**Initialize an instance for simple [getInstance]*/
     fun init(arg0: Arg0Class, arg1: Arg1Class): InstanceClass =

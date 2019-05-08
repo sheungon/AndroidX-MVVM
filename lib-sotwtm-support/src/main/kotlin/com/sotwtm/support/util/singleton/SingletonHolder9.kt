@@ -48,7 +48,7 @@ open class SingletonHolder9<InstanceClass, Arg0Class, Arg1Class, Arg2Class, Arg3
         }
 
     fun getInstance(): InstanceClass =
-        instance ?: throw ExceptionInInitializerError("This class not yet initialized.")
+        instance ?: throw ExceptionInInitializerError("This class not yet initialized")
 
     /**Initialize an instance for simple [getInstance]*/
     fun init(

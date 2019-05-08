@@ -1,4 +1,4 @@
-package com.sotwtm.support.dialog
+package com.sotwtm.support.fragment.dialog
 
 import com.sotwtm.support.base.BaseNavigator
 import com.sotwtm.support.scope.FragmentScope

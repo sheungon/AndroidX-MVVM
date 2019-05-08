@@ -1,4 +1,4 @@
-package com.sotwtm.support.dialog
+package com.sotwtm.support.fragment.dialog
 
 import android.content.Context
 import android.content.DialogInterface
@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatDialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.sotwtm.support.R
-import com.sotwtm.support.SotwtmSupportLib
 import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.activity.IOverridePendingTransition
 import com.sotwtm.util.Log
@@ -45,9 +44,8 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
         try {
             if (daggerEnabled) AndroidSupportInjection.inject(this)
         } catch (e: Exception) {
-            if (SotwtmSupportLib.enableDaggerErrorLog) {
-                Log.e("Disable dagger error log by SotwtmSupportLib.enableDaggerErrorLog", e)
-            }
+            Log.e("If dagger in not needed, disable dagger by setting daggerEnabled.")
+            throw e
         }
         super.onAttach(context)
     }
