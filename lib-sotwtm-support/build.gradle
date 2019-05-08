@@ -6,13 +6,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion rootProject.ext.compile_sdk_version
+    compileSdkVersion compile_sdk_version
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion rootProject.ext.target_sdk_version
+        targetSdkVersion target_sdk_version
         versionCode 1
-        versionName rootProject.ext.versions.support_lib
+        versionName versions.support_lib
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -78,10 +80,6 @@ android {
             }
         }
     }
-
-    defaultConfig {
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
 }
 
 dependencies {
@@ -90,11 +88,11 @@ dependencies {
     // =============================================================
     // <<<<<<<<<<<<<<<<<<<< MUST ADD LIBS START >>>>>>>>>>>>>>>>>>>>
     // Android support libs
-    implementation "com.android.support:design:$rootProject.ext.versions.support_lib"
-    implementation "android.arch.lifecycle:viewmodel:$rootProject.ext.versions.lifecycle"
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0"
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-$rootProject.ext.versions.kotlin_env:$rootProject.ext.versions.kotlin_plugin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-$versions.kotlin_env:$versions.kotlin_plugin"
 
     // Dagger 2
     implementation "com.google.dagger:dagger:$versions.dagger_2"
@@ -104,24 +102,24 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$versions.dagger_2"
 
     // AndroidEasyLog
-    implementation "com.sotwtm.util:ec-log:$rootProject.ext.versions.android_ec_log"
+    implementation "com.sotwtm.util:ec-log:$versions.android_ec_log"
     // <<<<<<<<<<<<<<<<<<<< MUST ADD LIBS END >>>>>>>>>>>>>>>>>>>>
     // ===========================================================
 
     /***** For Unit Test *****/
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.ext.versions.espresso", {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    androidTestImplementation "com.google.dagger:dagger:$rootProject.ext.versions.dagger_2"
-    kaptAndroidTest "com.google.dagger:dagger-compiler:$rootProject.ext.versions.dagger_2"
+    androidTestImplementation "com.google.dagger:dagger:$versions.dagger_2"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$versions.dagger_2"
     testImplementation deps.junit
-    testImplementation "com.google.dagger:dagger:$rootProject.ext.versions.dagger_2"
-    kaptTest "com.google.dagger:dagger-compiler:$rootProject.ext.versions.dagger_2"
-    androidTestImplementation "org.mockito:mockito-android:$rootProject.ext.versions.mockito"
-    testImplementation "org.mockito:mockito-core:$rootProject.ext.versions.mockito"
-    testImplementation "org.powermock:powermock-api-mockito2:$rootProject.ext.versions.power_mock"
-    testImplementation "org.powermock:powermock-module-junit4-rule-agent:$rootProject.ext.versions.power_mock"
-    testImplementation "org.powermock:powermock-module-junit4-rule:$rootProject.ext.versions.power_mock"
-    testImplementation "org.powermock:powermock-module-junit4:$rootProject.ext.versions.power_mock"
+    testImplementation "com.google.dagger:dagger:$versions.dagger_2"
+    kaptTest "com.google.dagger:dagger-compiler:$versions.dagger_2"
+    androidTestImplementation "org.mockito:mockito-android:$versions.mockito"
+    testImplementation "org.mockito:mockito-core:$versions.mockito"
+    testImplementation "org.powermock:powermock-api-mockito2:$versions.power_mock"
+    testImplementation "org.powermock:powermock-module-junit4-rule-agent:$versions.power_mock"
+    testImplementation "org.powermock:powermock-module-junit4-rule:$versions.power_mock"
+    testImplementation "org.powermock:powermock-module-junit4:$versions.power_mock"
 }

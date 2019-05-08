@@ -1,8 +1,8 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingMethod
-import android.databinding.BindingMethods
 import android.widget.Button
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
 
 
 /**

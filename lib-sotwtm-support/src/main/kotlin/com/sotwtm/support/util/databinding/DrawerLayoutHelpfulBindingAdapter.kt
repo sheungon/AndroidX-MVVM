@@ -1,7 +1,7 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingAdapter
-import android.support.v4.widget.DrawerLayout
+import androidx.databinding.BindingAdapter
+import androidx.drawerlayout.widget.DrawerLayout
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.
@@ -14,8 +14,8 @@ object DrawerLayoutHelpfulBindingAdapter {
     @JvmStatic
     @BindingAdapter("addDrawerListener")
     fun addDrawerListener(
-        drawerLayout: DrawerLayout,
-        listener: DrawerLayout.DrawerListener?
+        drawerLayout: androidx.drawerlayout.widget.DrawerLayout,
+        listener: androidx.drawerlayout.widget.DrawerLayout.DrawerListener?
     ) {
         if (listener != null) {
             drawerLayout.addDrawerListener(listener)

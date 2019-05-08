@@ -1,9 +1,9 @@
 package com.sotwtm.support.activity
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.design.widget.CoordinatorLayout
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import java.lang.ref.WeakReference
 
 /**
@@ -18,7 +18,9 @@ abstract class AppHelpfulDataBindingActivity<DataBindingClass : ViewDataBinding>
     override val coordinatorLayoutRef: WeakReference<CoordinatorLayout?> by lazy {
         WeakReference(
             coordinatorLayoutId?.let {
-                dataBinding?.root?.findViewById<CoordinatorLayout?>(it)
+                dataBinding?.root?.findViewById<CoordinatorLayout?>(
+                    it
+                )
                     ?: findViewById<CoordinatorLayout?>(it)
             }
         )

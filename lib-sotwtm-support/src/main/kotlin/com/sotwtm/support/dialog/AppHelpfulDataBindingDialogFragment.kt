@@ -1,17 +1,18 @@
 package com.sotwtm.support.dialog
 
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 
 /**
  */
-abstract class AppHelpfulDataBindingDialogFragment<DataBindingClass : ViewDataBinding> : AppHelpfulDialogFragment() {
+abstract class AppHelpfulDataBindingDialogFragment<DataBindingClass : ViewDataBinding> :
+    AppHelpfulDialogFragment() {
 
     @Volatile
     var dataBinding: DataBindingClass? = null
@@ -25,7 +26,11 @@ abstract class AppHelpfulDataBindingDialogFragment<DataBindingClass : ViewDataBi
      * */
     abstract fun initDataBinding(dataBinding: DataBindingClass, savedInstanceState: Bundle?)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
         layoutId?.let {
             dataBinding?.unbind()
             dataBinding = DataBindingUtil.inflate(inflater, it, container, false)

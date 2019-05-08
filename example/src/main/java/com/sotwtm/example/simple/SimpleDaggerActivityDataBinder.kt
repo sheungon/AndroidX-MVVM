@@ -2,7 +2,7 @@ package com.sotwtm.example.simple
 
 import android.app.Application
 import android.content.Intent
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 import com.sotwtm.example.sub.SubcomponentActivity
 import com.sotwtm.support.activity.ActivityMessenger
 import com.sotwtm.support.activity.AppHelpfulActivityDataBinder

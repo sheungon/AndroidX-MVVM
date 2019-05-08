@@ -1,13 +1,13 @@
 package com.sotwtm.support.util.databinding
 
 import android.content.res.ColorStateList
-import android.databinding.BindingAdapter
 import android.graphics.PorterDuff
 import android.os.Build
-import android.support.annotation.ColorInt
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
 import android.widget.ProgressBar
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.

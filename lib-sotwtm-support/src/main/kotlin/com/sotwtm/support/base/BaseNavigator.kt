@@ -90,7 +90,12 @@ abstract class BaseNavigator {
             )
     }
 
-    fun startActivityForResult(intent: Intent, requestCode: Int, overridePendingTransition: Boolean, options: Bundle?) {
+    fun startActivityForResult(
+        intent: Intent,
+        requestCode: Int,
+        overridePendingTransition: Boolean,
+        options: Bundle?
+    ) {
         activity?.startActivityForResult(
             intent = intent,
             requestCode = requestCode,

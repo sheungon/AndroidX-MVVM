@@ -1,7 +1,7 @@
 package com.sotwtm.support.rx
 
 import android.content.SharedPreferences
-import android.databinding.ObservableBoolean
+import androidx.databinding.ObservableBoolean
 
 /**
  * For observing [Boolean] value in [SharedPreferences]

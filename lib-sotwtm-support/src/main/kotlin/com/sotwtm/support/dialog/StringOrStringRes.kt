@@ -1,8 +1,8 @@
 package com.sotwtm.support.dialog
 
 import android.content.Context
-import android.databinding.ObservableField
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
+import androidx.databinding.ObservableField
 import com.sotwtm.util.Log
 
 class StringOrStringRes(private val context: Context) : ObservableField<String?>() {

@@ -3,7 +3,7 @@ package com.sotwtm.support
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.SharedPreferences
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 import com.sotwtm.support.SotwtmSupportLib.Companion.getInstance
 import com.sotwtm.support.SotwtmSupportLib.Companion.init
 import com.sotwtm.support.activity.OnAppLocaleChangedListener

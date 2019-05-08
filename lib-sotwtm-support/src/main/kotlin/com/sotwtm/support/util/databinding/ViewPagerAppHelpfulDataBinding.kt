@@ -1,12 +1,12 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingAdapter
-import android.databinding.BindingMethod
-import android.databinding.BindingMethods
-import android.databinding.adapters.ListenerUtil
-import android.support.design.widget.TabLayout
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
+import androidx.databinding.BindingAdapter
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
+import androidx.databinding.adapters.ListenerUtil
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.
@@ -15,8 +15,16 @@ import android.support.v4.view.ViewPager
  * @author sheungon
  */
 @BindingMethods(
-    BindingMethod(type = ViewPager::class, attribute = "onTouchListener", method = "setOnTouchListener"),
-    BindingMethod(type = ViewPager::class, attribute = "setOffscreenPageLimit", method = "setOffscreenPageLimit")
+    BindingMethod(
+        type = ViewPager::class,
+        attribute = "onTouchListener",
+        method = "setOnTouchListener"
+    ),
+    BindingMethod(
+        type = ViewPager::class,
+        attribute = "setOffscreenPageLimit",
+        method = "setOffscreenPageLimit"
+    )
 )
 object ViewPagerAppHelpfulDataBinding {
 

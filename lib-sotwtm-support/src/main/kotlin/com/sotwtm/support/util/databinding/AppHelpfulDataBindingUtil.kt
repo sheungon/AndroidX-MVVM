@@ -1,6 +1,6 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingConversion
+import androidx.databinding.BindingConversion
 import com.sotwtm.util.Log
 
 /**

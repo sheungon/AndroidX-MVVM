@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
-        <import type="com.sotwtm.support.util.databinding.AppHelpfulDataBindingUtil"/>
+        <import type="com.sotwtm.support.util.databinding.AppHelpfulDataBindingUtil" />
 
         <variable
-                name="loadingMsg"
-                type="com.sotwtm.support.dialog.StringOrStringRes"/>
+            name="loadingMsg"
+            type="com.sotwtm.support.dialog.StringOrStringRes" />
     </data>
 
     <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:padding="16dp">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:text='@{loadingMsg}'
-                android:textColor="@color/loading_text"
-                android:textSize="@dimen/text_small"
-                android:visibility="@{loadingMsg.isEmpty() ? View.GONE : View.VISIBLE}"
-                tools:text="@string/loading"
-                tools:visibility="visible"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text='@{loadingMsg}'
+            android:textColor="@color/loading_text"
+            android:textSize="@dimen/text_small"
+            android:visibility="@{loadingMsg.isEmpty() ? View.GONE : View.VISIBLE}"
+            tools:text="@string/loading"
+            tools:visibility="visible" />
 
     </LinearLayout>
 

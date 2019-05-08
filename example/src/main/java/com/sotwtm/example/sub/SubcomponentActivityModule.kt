@@ -1,7 +1,6 @@
 package com.sotwtm.example.sub
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentPagerAdapter
 import com.sotwtm.example.sub.fragment.NoDataBindingFragment
 import com.sotwtm.example.sub.fragment.SimpleDaggerFragment
 import com.sotwtm.example.sub.fragment.sub.SubcomponentFragment
@@ -31,7 +30,7 @@ class SubcomponentActivityModule {
     fun adapter(activity: SubcomponentActivity): FragmentPagerAdapter =
         object : FragmentPagerAdapter(activity.supportFragmentManager) {
 
-            override fun getItem(page: Int): Fragment =
+            override fun getItem(page: Int): androidx.fragment.app.Fragment =
                 when (page) {
                     0 -> SimpleDaggerFragment()
                     1 -> SubcomponentFragment()

@@ -6,16 +6,16 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import android.support.annotation.*
-import android.support.design.widget.CoordinatorLayout
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.google.android.material.snackbar.Snackbar
 import com.sotwtm.support.R
 import com.sotwtm.support.SotwtmSupportLib
 import com.sotwtm.support.dialog.LoadingDialogFragment
@@ -145,11 +145,12 @@ abstract class AppHelpfulActivity
     private lateinit var backStackListener: MyBackStackChangedListener
     private var fullScreenFlag = 0x0
 
-    private val onAppLocaleChangedListener: OnAppLocaleChangedListener = object : OnAppLocaleChangedListener() {
-        override fun onAppLocalChange() {
-            recreate()
+    private val onAppLocaleChangedListener: OnAppLocaleChangedListener =
+        object : OnAppLocaleChangedListener() {
+            override fun onAppLocalChange() {
+                recreate()
+            }
         }
-    }
 
     /**
      * Indicate if there should be back button on toolbar
@@ -192,7 +193,8 @@ abstract class AppHelpfulActivity
 
         super.onCreate(savedInstanceState)
 
-        SotwtmSupportLib.getInstance().registerOnAppLocaleChangedListener(onAppLocaleChangedListener)
+        SotwtmSupportLib.getInstance()
+            .registerOnAppLocaleChangedListener(onAppLocaleChangedListener)
 
         setContentViewInternal(layoutResId, savedInstanceState)
 
@@ -251,7 +253,8 @@ abstract class AppHelpfulActivity
     }
 
     override fun onDestroy() {
-        SotwtmSupportLib.getInstance().unregisterOnAppLocaleChangedListener(onAppLocaleChangedListener)
+        SotwtmSupportLib.getInstance()
+            .unregisterOnAppLocaleChangedListener(onAppLocaleChangedListener)
         super.onDestroy()
 
         dataBinder.onDestroyInternal()
@@ -318,7 +321,11 @@ abstract class AppHelpfulActivity
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         dataBinder.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -367,10 +374,12 @@ abstract class AppHelpfulActivity
         }
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment>? = supportFragmentInjector.get()
+    override fun supportFragmentInjector(): AndroidInjector<Fragment>? =
+        supportFragmentInjector.get()
 
     @Suppress("DEPRECATION")
-    override fun fragmentInjector(): AndroidInjector<android.app.Fragment>? = frameworkFragmentInjector.get()
+    override fun fragmentInjector(): AndroidInjector<android.app.Fragment>? =
+        frameworkFragmentInjector.get()
 
     override fun finish() {
         super.finish()
@@ -421,7 +430,7 @@ abstract class AppHelpfulActivity
      * @param msg The message on loading dialog
      */
     @Synchronized
-    fun showLoadingDialog(@StringRes msg: String) {
+    fun showLoadingDialog(msg: String) {
         showLoadingDialog(StringOrStringRes(this, msg))
     }
 

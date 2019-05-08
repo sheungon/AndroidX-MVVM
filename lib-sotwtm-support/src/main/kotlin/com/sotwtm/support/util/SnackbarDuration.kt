@@ -1,7 +1,7 @@
 package com.sotwtm.support.util
 
-import android.support.annotation.IntDef
-import android.support.design.widget.Snackbar
+import androidx.annotation.IntDef
+import com.google.android.material.snackbar.Snackbar
 
 
 /**

@@ -1,6 +1,6 @@
 package com.sotwtm.support.fragment
 
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.base.BaseMessenger
 import com.sotwtm.support.scope.FragmentScope
@@ -14,7 +14,9 @@ import javax.inject.Inject
  * @author sheungon
  */
 @FragmentScope
-class FragmentMessenger(private val fragmentRef: WeakReference<out AppHelpfulFragment>) : BaseMessenger() {
+class FragmentMessenger(private val fragmentRef: WeakReference<out AppHelpfulFragment>) :
+    BaseMessenger() {
+
     @Inject
     constructor(_fragment: AppHelpfulFragment) : this(WeakReference(_fragment))
 

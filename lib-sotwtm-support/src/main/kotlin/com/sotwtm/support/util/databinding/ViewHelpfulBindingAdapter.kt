@@ -1,10 +1,10 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingAdapter
-import android.databinding.adapters.ListenerUtil
-import android.support.annotation.DrawableRes
-import android.support.design.widget.Snackbar
 import android.view.View
+import androidx.annotation.DrawableRes
+import androidx.databinding.BindingAdapter
+import androidx.databinding.adapters.ListenerUtil
+import com.google.android.material.snackbar.Snackbar
 import com.sotwtm.support.R
 import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.util.createSnackbar

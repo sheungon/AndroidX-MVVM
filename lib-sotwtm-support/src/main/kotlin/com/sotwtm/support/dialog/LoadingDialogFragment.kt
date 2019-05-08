@@ -4,9 +4,9 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
 import android.view.Window
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.sotwtm.support.R
 import com.sotwtm.support.databinding.DialogLoadingBinding
 

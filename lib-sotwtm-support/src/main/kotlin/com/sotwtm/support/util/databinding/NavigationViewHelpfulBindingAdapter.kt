@@ -1,8 +1,8 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingMethod
-import android.databinding.BindingMethods
-import android.support.design.widget.NavigationView
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
+import com.google.android.material.navigation.NavigationView
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.

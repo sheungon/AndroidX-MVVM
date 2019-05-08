@@ -4,14 +4,16 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
-import android.support.v4.content.ContextCompat
 import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.sotwtm.support.R
 import com.sotwtm.util.Log
 
@@ -38,6 +40,7 @@ fun Int.boolResValue(context: Context): Boolean = context.resources.getBoolean(t
  * Get the color value of a ColorRes
  * @return The resource color value
  * */
+@ColorInt
 fun Int.colorResValue(context: Context): Int = ContextCompat.getColor(context, this)
 
 /**
@@ -50,19 +53,26 @@ fun Int.stringResValue(context: Context): String = context.getString(this)
  * Create a [Snackbar] for a [View]
  * @param message The message of the [Snackbar]
  * @param duration See [SnackbarDuration]
+ * @param actionTextColorRes The action text color res
+ * @param textColorRes The text color res
+ * @param snackbarBackgroundColorRes The background color res of the snackbar
  * @return [Snackbar] from input [View]
  * */
 fun View.createSnackbar(
     message: String,
-    @SnackbarDuration duration: Int
+    @SnackbarDuration duration: Int,
+    @ColorRes actionTextColorRes: Int = R.color.snackbar_action_text,
+    @ColorRes textColorRes: Int = R.color.snackbar_text,
+    @ColorRes snackbarBackgroundColorRes: Int = R.color.snackbar_bg
 ): Snackbar =
     Snackbar.make(this, message, duration)
-        .setActionTextColor(ContextCompat.getColor(context, R.color.snackbar_action_text))
+        .setActionTextColor(actionTextColorRes.colorResValue(context))
         .apply {
-            val snackbarText = view.findViewById<TextView?>(android.support.design.R.id.snackbar_text)
-            snackbarText?.setTextColor(ContextCompat.getColor(context, R.color.snackbar_text))
+            val snackbarText =
+                view.findViewById<TextView?>(com.google.android.material.R.id.snackbar_text)
+            snackbarText?.setTextColor(textColorRes.colorResValue(context))
 
-            view.setBackgroundColor(ContextCompat.getColor(context, R.color.snackbar_bg))
+            view.setBackgroundColor(snackbarBackgroundColorRes.colorResValue(context))
         }
 
 /**
@@ -76,7 +86,8 @@ fun Float.dpToPixel(context: Context) =
  * Check if the app context is now in landscape mode.
  * @return true if the device orientation is landscape.
  * */
-fun Context.isLandscapeNow(): Boolean = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+fun Context.isLandscapeNow(): Boolean =
+    resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
 /**
  * Hide the soft input keyboard from a given focus view

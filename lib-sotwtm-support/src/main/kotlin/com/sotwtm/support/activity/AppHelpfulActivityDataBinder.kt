@@ -1,9 +1,9 @@
 package com.sotwtm.support.activity
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.lifecycle.AndroidViewModel
 import com.sotwtm.support.SotwtmSupportLib
 
 /**

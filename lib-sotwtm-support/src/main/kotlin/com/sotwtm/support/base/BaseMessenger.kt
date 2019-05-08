@@ -1,6 +1,6 @@
 package com.sotwtm.support.base
 
-import android.support.annotation.StringRes
+import androidx.annotation.StringRes
 import com.sotwtm.support.R
 import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.util.SnackbarDuration
@@ -22,7 +22,7 @@ abstract class BaseMessenger {
      * @param msg The message on loading dialog
      * *
      */
-    abstract fun showLoadingDialog(@StringRes msg: String)
+    abstract fun showLoadingDialog(msg: String)
 
     abstract fun dismissLoadingDialog()
     /**

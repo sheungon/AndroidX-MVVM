@@ -1,8 +1,8 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.BindingMethod
-import android.databinding.BindingMethods
-import android.support.v7.app.ActionBar
+import androidx.appcompat.app.ActionBar
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.

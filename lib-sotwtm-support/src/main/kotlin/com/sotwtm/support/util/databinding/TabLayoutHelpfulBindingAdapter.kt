@@ -1,8 +1,8 @@
 package com.sotwtm.support.util.databinding
 
-import android.databinding.*
-import android.databinding.adapters.ListenerUtil
-import android.support.design.widget.TabLayout
+import androidx.databinding.*
+import androidx.databinding.adapters.ListenerUtil
+import com.google.android.material.tabs.TabLayout
 
 
 /**
@@ -12,7 +12,11 @@ import android.support.design.widget.TabLayout
  * @author sheungon
  */
 @BindingMethods(
-    BindingMethod(type = TabLayout::class, attribute = "setupWithViewPager", method = "setupWithViewPager")
+    BindingMethod(
+        type = TabLayout::class,
+        attribute = "setupWithViewPager",
+        method = "setupWithViewPager"
+    )
 )
 object TabLayoutHelpfulBindingAdapter {
 

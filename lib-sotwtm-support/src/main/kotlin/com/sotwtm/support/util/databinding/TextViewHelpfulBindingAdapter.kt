@@ -1,13 +1,13 @@
 package com.sotwtm.support.util.databinding
 
 import android.content.Context
-import android.databinding.BindingAdapter
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Build
-import android.support.v4.content.ContextCompat
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.databinding.BindingAdapter
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.
@@ -90,8 +90,10 @@ object TextViewHelpfulBindingAdapter {
             if ((start == null && left != null) ||
                 (end == null && right != null)
             ) {
-                val leftDrawable = if (start == null) left?.safeGetDrawable(context) else startDrawable
-                val rightDrawable = if (end == null) right?.safeGetDrawable(context) else endDrawable
+                val leftDrawable =
+                    if (start == null) left?.safeGetDrawable(context) else startDrawable
+                val rightDrawable =
+                    if (end == null) right?.safeGetDrawable(context) else endDrawable
                 view.setCompoundDrawables(
                     leftDrawable,
                     topDrawable,

@@ -3,14 +3,14 @@ package com.sotwtm.support.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.AnimRes
-import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
-import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.AnimRes
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.Snackbar
 import com.sotwtm.support.R
 import com.sotwtm.support.SotwtmSupportLib
 import com.sotwtm.support.activity.AppHelpfulActivity
@@ -100,7 +100,11 @@ abstract class AppHelpfulFragment : Fragment(), HasSupportFragmentInjector {
         dataBinder?.onCreate()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View =
         inflater.inflate(layoutResId, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -198,7 +202,8 @@ abstract class AppHelpfulFragment : Fragment(), HasSupportFragmentInjector {
         }
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment>? = childFragmentInjector.get()
+    override fun supportFragmentInjector(): AndroidInjector<Fragment>? =
+        childFragmentInjector.get()
 
     /**
      * @return `true` if view is bound by ButterKnife. Otherwise, `false`
@@ -309,7 +314,10 @@ abstract class AppHelpfulFragment : Fragment(), HasSupportFragmentInjector {
     ): Snackbar? {
         val activity = activity
         return (activity as? AppHelpfulActivity)?.createSnackBarWithRootView(messageRes, duration)
-            ?: if (activity != null) createSnackBarWithRootView(activity.getString(messageRes), duration)
+            ?: if (activity != null) createSnackBarWithRootView(
+                activity.getString(messageRes),
+                duration
+            )
             else {
                 Log.e("Fragment is not attached! message lost : $messageRes")
                 null

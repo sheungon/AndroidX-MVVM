@@ -2,8 +2,8 @@ package com.sotwtm.support
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.databinding.ObservableField
-import android.support.v4.os.LocaleListCompat
+import androidx.core.os.LocaleListCompat
+import androidx.databinding.ObservableField
 import com.sotwtm.support.scope.LibScope
 import com.sotwtm.support.util.locale.AppHelpfulLocaleUtil
 import com.sotwtm.support.util.locale.unify
@@ -91,20 +91,25 @@ internal class SotwtmSupportBaseModule {
                     editor.apply()
                     notifyChange()
                 } else {
-                    val currentAppLocale = requireNotNull(appLocale(sharedPreferences, editor).get())
+                    val currentAppLocale =
+                        requireNotNull(appLocale(sharedPreferences, editor).get())
                     // Check if the current locale is in the new supported locale list
                     if (!newLocales.any { AppHelpfulLocaleUtil.equals(currentAppLocale, it) }) {
                         // If the current locale is not supported anymore, update current locale to system best matched
                         SotwtmSupportLib.getInstance().resetLocaleToSystemBestMatched(newLocales)
                     }
-                    val localeListString = newLocales.joinToString(separator = SotwtmSupportLib.SEPARATOR_LOCALE,
-                        transform = { LocaleListCompat.create(it.unify()).toLanguageTags() })
+                    val localeListString =
+                        newLocales.joinToString(separator = SotwtmSupportLib.SEPARATOR_LOCALE,
+                            transform = { LocaleListCompat.create(it.unify()).toLanguageTags() })
                     if (localeListString != sharedPreferences.getString(
                             SotwtmSupportLib.PREF_KEY_SUPPORTED_LOCALES,
                             null
                         )
                     ) {
-                        editor.putString(SotwtmSupportLib.PREF_KEY_SUPPORTED_LOCALES, localeListString)
+                        editor.putString(
+                            SotwtmSupportLib.PREF_KEY_SUPPORTED_LOCALES,
+                            localeListString
+                        )
                         editor.apply()
                         notifyChange()
                     }

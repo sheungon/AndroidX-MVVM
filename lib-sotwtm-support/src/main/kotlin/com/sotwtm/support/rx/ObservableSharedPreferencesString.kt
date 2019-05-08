@@ -1,7 +1,7 @@
 package com.sotwtm.support.rx
 
 import android.content.SharedPreferences
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 
 /**
  *

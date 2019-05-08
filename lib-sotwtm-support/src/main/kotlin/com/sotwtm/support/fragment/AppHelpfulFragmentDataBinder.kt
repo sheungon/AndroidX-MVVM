@@ -1,16 +1,17 @@
 package com.sotwtm.support.fragment
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.AndroidViewModel
 import com.sotwtm.support.SotwtmSupportLib
 
 /**
  * @author sheungon
  */
 
-abstract class AppHelpfulFragmentDataBinder(application: Application) : AndroidViewModel(application) {
+abstract class AppHelpfulFragmentDataBinder(application: Application) :
+    AndroidViewModel(application) {
 
     val locale = SotwtmSupportLib.getInstance().appLocale
     @Volatile

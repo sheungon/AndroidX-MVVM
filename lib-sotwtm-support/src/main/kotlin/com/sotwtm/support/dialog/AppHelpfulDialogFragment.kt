@@ -4,17 +4,17 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
-import android.support.annotation.UiThread
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatDialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
+import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.sotwtm.support.R
 import com.sotwtm.support.SotwtmSupportLib
 import com.sotwtm.support.activity.AppHelpfulActivity
@@ -58,7 +58,11 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
         dataBinder?.onCreate()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? =
         layoutId?.let {
             inflater.inflate(it, container, false)
         } ?: super.onCreateView(inflater, container, savedInstanceState)
@@ -168,7 +172,8 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
         }
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment>? = childFragmentInjector.get()
+    override fun supportFragmentInjector(): AndroidInjector<Fragment>? =
+        childFragmentInjector.get()
 
     fun onEditorAction(actionId: Int): Boolean {
 
@@ -198,7 +203,7 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
         (activity as? AppHelpfulActivity)?.showLoadingDialog(msgRes)
     }
 
-    internal fun showLoadingDialog(@StringRes msg: String) {
+    internal fun showLoadingDialog(msg: String) {
         (activity as? AppHelpfulActivity)?.showLoadingDialog(msg)
     }
 
@@ -224,7 +229,13 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
         val fragmentDialog = dialog ?: return
 
         // Make dialog content gone
-        fragmentDialog.setContentView(LayoutInflater.from(context).inflate(layoutResId, null, false))
+        fragmentDialog.setContentView(
+            LayoutInflater.from(context).inflate(
+                layoutResId,
+                null,
+                false
+            )
+        )
         fragmentDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
     }
 
@@ -236,7 +247,8 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
      * Set this on show listener to you dialog to make dialog OK button on click response to [.onOkClick].
      * Using this, the dialog will NOT be dismissed on OK button click
      */
-    protected class OnShowSetupOnOkClickListener(fragment: AppHelpfulDialogFragment) : DialogInterface.OnShowListener {
+    protected class OnShowSetupOnOkClickListener(fragment: AppHelpfulDialogFragment) :
+        DialogInterface.OnShowListener {
 
         private val fragmentRef: WeakReference<AppHelpfulDialogFragment> = WeakReference(fragment)
 

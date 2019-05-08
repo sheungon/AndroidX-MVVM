@@ -136,7 +136,10 @@ fun Context.setAppLocale(locale: Locale): Context {
         }
     }
 
-    applicationContext.resources.updateConfiguration(appConfig, applicationContext.resources.displayMetrics)
+    applicationContext.resources.updateConfiguration(
+        appConfig,
+        applicationContext.resources.displayMetrics
+    )
 
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
         createConfigurationContext(config)

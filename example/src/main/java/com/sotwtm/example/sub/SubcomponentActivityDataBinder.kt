@@ -1,8 +1,8 @@
 package com.sotwtm.example.sub
 
 import android.app.Application
-import android.databinding.ObservableInt
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.databinding.ObservableInt
+import androidx.fragment.app.FragmentPagerAdapter
 import com.sotwtm.support.activity.AppHelpfulActivityDataBinder
 import com.sotwtm.support.scope.ActivityScope
 import javax.inject.Inject

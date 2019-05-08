@@ -1,12 +1,12 @@
 package com.sotwtm.support.util.databinding
 
 import android.content.Context
-import android.databinding.BindingAdapter
-import android.databinding.InverseBindingMethod
-import android.databinding.InverseBindingMethods
-import android.databinding.adapters.ListenerUtil
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingMethod
+import androidx.databinding.InverseBindingMethods
+import androidx.databinding.adapters.ListenerUtil
 
 /**
  * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.
@@ -34,7 +34,6 @@ object AdapterViewHelpfulBindingAdapter {
                         .toArrayAdapter(context).apply {
                             ListenerUtil.trackListener(this@setItemsStringArrayRes, this, arrayRes)
                         }
-
                 }
         }
         if (adapter != arrayAdapter) {
@@ -66,7 +65,8 @@ object AdapterViewHelpfulBindingAdapter {
         selectedItemString(selectedString)
     }
 
-    private fun Int.toResStringArray(context: Context) = context.resources.getStringArray(this).asList()
+    private fun Int.toResStringArray(context: Context) =
+        context.resources.getStringArray(this).asList()
 
     private fun List<String>.toArrayAdapter(context: Context) =
         ArrayAdapter(context, android.R.layout.simple_spinner_item, this).apply {

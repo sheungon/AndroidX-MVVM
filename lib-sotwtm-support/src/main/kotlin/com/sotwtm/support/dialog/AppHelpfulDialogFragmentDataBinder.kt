@@ -1,15 +1,16 @@
 package com.sotwtm.support.dialog
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.AndroidViewModel
 import com.sotwtm.support.SotwtmSupportLib
 
 /**
  * @author sheungon
  */
-open class AppHelpfulDialogFragmentDataBinder(application: Application) : AndroidViewModel(application) {
+open class AppHelpfulDialogFragmentDataBinder(application: Application) :
+    AndroidViewModel(application) {
 
     val locale = SotwtmSupportLib.getInstance().appLocale
     @Volatile
