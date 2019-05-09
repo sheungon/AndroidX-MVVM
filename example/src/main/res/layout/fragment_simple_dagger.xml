@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="dataBinder"
-            type="com.sotwtm.example.sub.fragment.SimpleDaggerFragmentDataBinder" />
+            name="viewModel"
+            type="com.sotwtm.example.sub.fragment.SimpleDaggerFragmentViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,7 +27,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> dataBinder.onClickLoading()}"
+            android:onClick="@{() -> viewModel.onClickLoading()}"
             android:text="@string/load"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -14,12 +14,12 @@ class SubcomponentActivity : AppHelpfulDataBindingActivity<ActivitySubcomponentB
 
     override val layoutResId: Int = R.layout.activity_subcomponent
     @Inject
-    override lateinit var dataBinder: SubcomponentActivityDataBinder
+    override lateinit var viewModel: SubcomponentActivityViewModel
     override val coordinatorLayoutId: Int = R.id.coordinator_layout
 
 
     override fun initDataBinding(dataBinding: ActivitySubcomponentBinding, savedInstanceState: Bundle?) {
-        dataBinding.dataBinder = dataBinder
-        setActionBarTitle(getString(R.string.title_subcomponent, dataBinder.magicNumber.toString()))
+        dataBinding.viewModel = viewModel
+        setActionBarTitle(getString(R.string.title_subcomponent, viewModel.magicNumber.toString()))
     }
 }

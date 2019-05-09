@@ -36,7 +36,7 @@ import javax.inject.Inject
 /**
  * Activity applied animation on transit.
  * This activity comes without Android Data Binding.
- * Created by John on 10/11/2015.
+ * Created by sheungon on 10/11/2015.
  *
  * @author sheungon
  */
@@ -156,7 +156,7 @@ abstract class AppHelpfulActivity
      * Indicate if there should be back button on toolbar
      * */
     open val menuBackEnabled: Boolean = false
-    abstract val dataBinder: AppHelpfulActivityDataBinder
+    abstract val viewModel: AppHelpfulActivityViewModel
 
 
     override fun attachBaseContext(newBase: Context) {
@@ -204,7 +204,7 @@ abstract class AppHelpfulActivity
             }
         }
 
-        dataBinder.onCreateInternal(savedInstanceState)
+        viewModel.onCreateInternal(savedInstanceState)
 
         val decorView = window.decorView
         decorView.setOnSystemUiVisibilityChangeListener(MySystemUiVisibilityChangeListener(this))
@@ -221,7 +221,7 @@ abstract class AppHelpfulActivity
 
         supportFragmentManager?.addOnBackStackChangedListener(backStackListener)
 
-        dataBinder.onStart()
+        viewModel.onStart()
     }
 
     override fun onResume() {
@@ -229,7 +229,7 @@ abstract class AppHelpfulActivity
 
         updateFullScreenStatus()
 
-        dataBinder.onResumeInternal()
+        viewModel.onResumeInternal()
         loadingDialogMsg?.let {
             showLoadingDialog(it)
         } ?: run {
@@ -240,13 +240,13 @@ abstract class AppHelpfulActivity
     override fun onPause() {
         super.onPause()
 
-        dataBinder.onPauseInternal()
+        viewModel.onPauseInternal()
     }
 
     override fun onStop() {
         super.onStop()
 
-        dataBinder.onStop()
+        viewModel.onStop()
 
         supportFragmentManager?.removeOnBackStackChangedListener(backStackListener)
     }
@@ -256,13 +256,13 @@ abstract class AppHelpfulActivity
             .unregisterOnAppLocaleChangedListener(onAppLocaleChangedListener)
         super.onDestroy()
 
-        dataBinder.onDestroyInternal()
+        viewModel.onDestroyInternal()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        dataBinder.onSaveInstanceState(outState)
+        viewModel.onSaveInstanceState(outState)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
@@ -295,7 +295,7 @@ abstract class AppHelpfulActivity
                 onBackPressed()
                 true
             }
-            else -> dataBinder.onOptionsItemSelected(item)
+            else -> viewModel.onOptionsItemSelected(item)
         }
 
     override fun onBackPressed() {
@@ -327,7 +327,7 @@ abstract class AppHelpfulActivity
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        dataBinder.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        viewModel.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     override fun startActivity(intent: Intent) {
@@ -403,14 +403,14 @@ abstract class AppHelpfulActivity
     }
 
     override fun isDestroyed(): Boolean = try {
-        dataBinder.isActivityDestroyed
+        viewModel.isActivityDestroyed
     } catch (th: Throwable) {
-        Log.e("error on access dataBinder.isActivityDestroyed", th)
+        Log.e("error on access viewModel.isActivityDestroyed", th)
         super.isDestroyed()
     }
 
     open val isViewBound: Boolean
-        get() = !dataBinder.isActivityPaused
+        get() = !viewModel.isActivityPaused
 
     /**
      * @param msgRes The message on loading dialog
@@ -440,7 +440,7 @@ abstract class AppHelpfulActivity
     private fun showLoadingDialog(msgOrMsgRes: StringOrStringRes) {
 
         loadingDialogMsg = msgOrMsgRes
-        if (dataBinder.isActivityPaused) {
+        if (viewModel.isActivityPaused) {
             Log.d("Activity is paused.")
             return
         }
@@ -466,7 +466,7 @@ abstract class AppHelpfulActivity
     fun dismissLoadingDialog() {
 
         loadingDialogMsg = null
-        if (dataBinder.isActivityPaused) {
+        if (viewModel.isActivityPaused) {
             Log.d("Activity is paused.")
             return
         }

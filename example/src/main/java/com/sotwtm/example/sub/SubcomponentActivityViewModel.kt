@@ -3,7 +3,7 @@ package com.sotwtm.example.sub
 import android.app.Application
 import androidx.databinding.ObservableInt
 import androidx.fragment.app.FragmentPagerAdapter
-import com.sotwtm.support.activity.AppHelpfulActivityDataBinder
+import com.sotwtm.support.activity.AppHelpfulActivityViewModel
 import com.sotwtm.support.scope.ActivityScope
 import javax.inject.Inject
 
@@ -14,12 +14,12 @@ import javax.inject.Inject
  * @author sheungon
  * */
 @ActivityScope
-class SubcomponentActivityDataBinder
+class SubcomponentActivityViewModel
 @Inject
 constructor(
     application: Application,
     @SubcomponentActivitySubcomponent.MagicNumber val magicNumber: Long,
     val pagerAdapter: FragmentPagerAdapter
-) : AppHelpfulActivityDataBinder(application) {
+) : AppHelpfulActivityViewModel(application) {
     val selectTabAt = ObservableInt(0)
 }

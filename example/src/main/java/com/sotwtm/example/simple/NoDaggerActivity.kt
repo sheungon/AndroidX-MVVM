@@ -2,7 +2,7 @@ package com.sotwtm.example.simple
 
 import com.sotwtm.example.R
 import com.sotwtm.support.activity.AppHelpfulActivity
-import com.sotwtm.support.activity.AppHelpfulActivityDataBinder
+import com.sotwtm.support.activity.AppHelpfulActivityViewModel
 
 /**
  * This example is not recommended to use.
@@ -17,7 +17,7 @@ class NoDaggerActivity : AppHelpfulActivity() {
 
     override val layoutResId: Int = R.layout.activity_no_dagger
 
-    override val dataBinder: AppHelpfulActivityDataBinder by lazy {
-        object : AppHelpfulActivityDataBinder(application) {}
+    override val viewModel: AppHelpfulActivityViewModel by lazy {
+        object : AppHelpfulActivityViewModel(application) {}
     }
 }

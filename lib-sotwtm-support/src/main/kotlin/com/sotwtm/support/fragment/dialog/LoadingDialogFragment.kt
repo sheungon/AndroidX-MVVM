@@ -13,24 +13,26 @@ import com.sotwtm.support.databinding.DialogLoadingBinding
 
 /**
  * A general loading dialog.
+ *
+ * By default, it is not cancelable.
 
- * Created by johntsai on 29/7/15.
+ * Created by sheungon on 29/7/15.
  * @author sheungon
  */
 class LoadingDialogFragment : AppHelpfulDataBindingDialogFragment<DialogLoadingBinding>() {
 
     init {
-        isCancelable = CANCELABLE
+        isCancelable = false
     }
 
     override val layoutId: Int? = R.layout.dialog_loading
-    override val dataBinder: AppHelpfulDialogFragmentDataBinder? = null
     override val daggerEnabled: Boolean = false
+    override var viewModel: LoadingDialogFragmentViewModel? = null
 
     var loadingMsg: StringOrStringRes? = null
         set(value) {
             field = value
-            dataBinding?.loadingMsg = value
+            viewModel?.loadingMsg?.sync(value)
         }
 
     private var dismissed: Boolean = false
@@ -38,7 +40,7 @@ class LoadingDialogFragment : AppHelpfulDataBindingDialogFragment<DialogLoadingB
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
 
-        dialog.window?.let {
+        dialog.window?.also {
             it.requestFeature(Window.FEATURE_NO_TITLE)
             it.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
@@ -47,7 +49,12 @@ class LoadingDialogFragment : AppHelpfulDataBindingDialogFragment<DialogLoadingB
     }
 
     override fun initDataBinding(dataBinding: DialogLoadingBinding, savedInstanceState: Bundle?) {
-        dataBinding.loadingMsg = loadingMsg
+        dataBinding.viewModel = activity?.let { activity ->
+            LoadingDialogFragmentViewModel(activity).also {
+                viewModel = it
+                loadingMsg = loadingMsg
+            }
+        }
     }
 
     override fun onResume() {
@@ -55,7 +62,7 @@ class LoadingDialogFragment : AppHelpfulDataBindingDialogFragment<DialogLoadingB
 
         // Sometime dismiss event called before loading dialog ready
         if (dismissed) {
-            dismiss()
+            dismissAllowingStateLoss()
         }
     }
 
@@ -82,9 +89,5 @@ class LoadingDialogFragment : AppHelpfulDataBindingDialogFragment<DialogLoadingB
     override fun dismiss() {
         dismissed = true
         super.dismiss()
-    }
-
-    companion object {
-        private const val CANCELABLE = false
     }
 }

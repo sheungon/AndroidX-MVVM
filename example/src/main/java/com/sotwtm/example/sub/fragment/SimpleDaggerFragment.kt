@@ -14,9 +14,9 @@ class SimpleDaggerFragment : AppHelpfulDataBindingFragment<FragmentSimpleDaggerB
 
     override val layoutResId: Int = R.layout.fragment_simple_dagger
     @Inject
-    override lateinit var dataBinder: SimpleDaggerFragmentDataBinder
+    override lateinit var viewModel: SimpleDaggerFragmentViewModel
 
     override fun initDataBinding(dataBinding: FragmentSimpleDaggerBinding, savedInstanceState: Bundle?) {
-        dataBinding.dataBinder = dataBinder
+        dataBinding.viewModel = viewModel
     }
 }

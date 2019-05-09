@@ -9,8 +9,8 @@
         <import type="com.sotwtm.support.util.databinding.AppHelpfulDataBindingUtil" />
 
         <variable
-            name="loadingMsg"
-            type="com.sotwtm.support.fragment.dialog.StringOrStringRes" />
+            name="viewModel"
+            type="com.sotwtm.support.fragment.dialog.LoadingDialogFragmentViewModel" />
     </data>
 
     <LinearLayout
@@ -31,10 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:text='@{loadingMsg}'
+            android:text='@{viewModel.loadingMsg}'
             android:textColor="@color/loading_text"
             android:textSize="@dimen/text_small"
-            android:visibility="@{loadingMsg.isEmpty() ? View.GONE : View.VISIBLE}"
+            android:visibility="@{viewModel.loadingMsg == null ? View.GONE : View.VISIBLE}"
             tools:text="@string/loading"
             tools:visibility="visible" />
 

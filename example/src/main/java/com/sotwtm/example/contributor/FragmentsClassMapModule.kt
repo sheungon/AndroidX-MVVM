@@ -23,7 +23,7 @@ class FragmentsClassMapModule {
 
     /**
      * @see SubcomponentFragmentSubcomponent
-     * @see com.sotwtm.example.sub.fragment.sub.SubcomponentFragmentDataBinder
+     * @see com.sotwtm.example.sub.fragment.sub.SubcomponentFragmentViewModel
      * */
     @Provides
     @IntoMap

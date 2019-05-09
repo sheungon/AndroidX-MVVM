@@ -2,10 +2,22 @@ package com.sotwtm.support.fragment.dialog
 
 import android.content.Context
 import androidx.annotation.StringRes
-import androidx.databinding.ObservableField
+import androidx.lifecycle.MutableLiveData
+import com.sotwtm.io.Syncable
 import com.sotwtm.util.Log
+import java.lang.ref.WeakReference
 
-class StringOrStringRes(private val context: Context) : ObservableField<String?>() {
+/**
+ * An observable String that support get String from String res.
+ *
+ * The priority is get String from String res. If failed, get from String value.
+ *
+ * @author sheungon
+ * */
+class StringOrStringRes(_context: Context) : MutableLiveData<String?>(),
+    Syncable<StringOrStringRes?> {
+
+    private val contextRef: WeakReference<Context> = WeakReference(_context)
 
     constructor(
         context: Context,
@@ -18,42 +30,55 @@ class StringOrStringRes(private val context: Context) : ObservableField<String?>
         context: Context,
         msg: String
     ) : this(context) {
-        set(msg)
+        postValue(msg)
     }
 
+    @get:Synchronized
+    @set:Synchronized
+    @Volatile
     var msgRes: Int? = null
-        @Synchronized
         set(value) {
-            field = value
-            if (value != null) {
-                set(null)
+            if (field != value) {
+                field = value
+                // Notify change
+                postValue(this.value)
             }
         }
 
     @Synchronized
-    override fun get(): String? = msgRes?.let {
+    override fun getValue(): String? = msgRes?.let {
         try {
-            context.getString(it)
+            contextRef.get()?.getString(it)
         } catch (th: Throwable) {
             Log.e("Error on get resources $it", th)
             null
         }
-    } ?: super.get()
-    ?: ""
+    } ?: super.getValue()
 
     @Synchronized
-    override fun set(value: String?) {
-        if (value != null) {
-            msgRes = null
-        }
-        super.set(value)
+    override fun sync(target: StringOrStringRes?) {
+        msgRes = target?.msgRes
+        postValue(target?.value)
     }
 
     @Synchronized
-    fun sync(value: StringOrStringRes) {
-        msgRes = value.msgRes
+    override fun syncNonNull(target: StringOrStringRes?) {
+        target?.msgRes?.let {
+            msgRes = it
+        }
+        target?.value?.let {
+            postValue(it)
+        }
+    }
+
+    @Synchronized
+    override fun fillInNullFields(target: StringOrStringRes?) {
+        if (target == null) return
         if (msgRes == null) {
-            set(value.get())
+            msgRes = target.msgRes
+        }
+        if (value == null) {
+            postValue(target.value)
         }
     }
 }

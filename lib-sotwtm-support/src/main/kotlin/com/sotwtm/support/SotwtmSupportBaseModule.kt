@@ -78,20 +78,18 @@ internal class SotwtmSupportBaseModule {
     ): ObservableField<List<Locale>> =
         object : ObservableField<List<Locale>>(emptyList()) {
             @Synchronized
-            override fun get(): List<Locale> {
-                val supportedLocalesString =
-                    sharedPreferences.getString(SotwtmSupportLib.PREF_KEY_SUPPORTED_LOCALES, null)
-                        ?: return defaultSupportedLocales
-                return supportedLocalesString.split(SotwtmSupportLib.SEPARATOR_LOCALE).map {
-                    LocaleListCompat.forLanguageTags(it)
-                }.flatMap {
-                    ArrayList<Locale>().apply {
-                        for (i in 0 until it.size()) {
-                            add(it.get(i))
+            override fun get(): List<Locale> =
+                sharedPreferences.getString(SotwtmSupportLib.PREF_KEY_SUPPORTED_LOCALES, null)
+                    ?.split(SotwtmSupportLib.SEPARATOR_LOCALE)
+                    ?.map {
+                        LocaleListCompat.forLanguageTags(it)
+                    }?.flatMap {
+                        ArrayList<Locale>().apply {
+                            for (i in 0 until it.size()) {
+                                add(it.get(i))
+                            }
                         }
-                    }
-                }
-            }
+                    } ?: defaultSupportedLocales
 
             @Synchronized
             override fun set(newLocales: List<Locale>?) {

@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference
 
 /**
  * Activity applied animation on transit.
- * Created by John on 10/11/2015.
+ * Created by sheungon on 10/11/2015.
 
  * @author sheungon
  */

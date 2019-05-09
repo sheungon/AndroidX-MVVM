@@ -35,7 +35,7 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
     internal lateinit var childFragmentInjector: Lazy<DispatchingAndroidInjector<Fragment>?>
 
     abstract val layoutId: Int?
-    abstract val dataBinder: AppHelpfulDialogFragmentDataBinder?
+    abstract val viewModel: AppHelpfulDialogFragmentViewModel?
 
     /**Indicate if dagger injection is enabled to this dialog fragment.*/
     open val daggerEnabled: Boolean = true
@@ -53,7 +53,7 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        dataBinder?.onCreate()
+        viewModel?.onCreate()
     }
 
     override fun onCreateView(
@@ -68,43 +68,43 @@ abstract class AppHelpfulDialogFragment : AppCompatDialogFragment(), HasSupportF
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataBinder?.onViewCreatedInternal(view, savedInstanceState)
+        viewModel?.onViewCreatedInternal(view, savedInstanceState)
     }
 
     override fun onStart() {
         super.onStart()
 
-        dataBinder?.onStart()
+        viewModel?.onStart()
     }
 
     override fun onResume() {
         super.onResume()
 
-        dataBinder?.onResumeInternal()
+        viewModel?.onResumeInternal()
     }
 
     override fun onPause() {
         super.onPause()
 
-        dataBinder?.onPauseInternal()
+        viewModel?.onPauseInternal()
     }
 
     override fun onStop() {
         super.onStop()
 
-        dataBinder?.onStop()
+        viewModel?.onStop()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
 
-        dataBinder?.onDestroyViewInternal()
+        viewModel?.onDestroyViewInternal()
     }
 
     override fun onDestroy() {
         super.onDestroy()
 
-        dataBinder?.onDestroy()
+        viewModel?.onDestroy()
     }
 
     override fun startActivity(intent: Intent) {

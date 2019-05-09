@@ -10,7 +10,7 @@ import com.sotwtm.support.SotwtmSupportLib
  * @author sheungon
  */
 
-abstract class AppHelpfulFragmentDataBinder(application: Application) :
+abstract class AppHelpfulFragmentViewModel(application: Application) :
     AndroidViewModel(application) {
 
     val locale = SotwtmSupportLib.getInstance().appLocale
@@ -22,9 +22,9 @@ abstract class AppHelpfulFragmentDataBinder(application: Application) :
         private set
 
     @Synchronized
-    internal fun syncStatus(dataBinder: AppHelpfulFragmentDataBinder): AppHelpfulFragmentDataBinder {
-        isPaused = dataBinder.isPaused
-        isViewDestroyed = dataBinder.isViewDestroyed
+    internal fun syncStatus(viewModel: AppHelpfulFragmentViewModel): AppHelpfulFragmentViewModel {
+        isPaused = viewModel.isPaused
+        isViewDestroyed = viewModel.isViewDestroyed
         return this
     }
 

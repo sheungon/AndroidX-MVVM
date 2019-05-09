@@ -16,5 +16,5 @@ class NoDataBindingActivity : AppHelpfulActivity() {
     override val startEnterAnim: Int? = R.anim.fade_in
     override val startExitAnim: Int? = R.anim.fade_out
     @Inject
-    override lateinit var dataBinder: NoDataBindingActivityDataBinder
+    override lateinit var viewModel: NoDataBindingActivityViewModel
 }

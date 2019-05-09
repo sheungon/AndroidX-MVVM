@@ -14,10 +14,10 @@ class SimpleDaggerActivity : AppHelpfulDataBindingActivity<ActivitySimpleDaggerB
 
     override val layoutResId: Int = R.layout.activity_simple_dagger
     @Inject
-    override lateinit var dataBinder: SimpleDaggerActivityDataBinder
+    override lateinit var viewModel: SimpleDaggerActivityViewModel
     override val coordinatorLayoutId: Int = R.id.coordinator_layout
 
     override fun initDataBinding(dataBinding: ActivitySimpleDaggerBinding, savedInstanceState: Bundle?) {
-        dataBinding.dataBinder = dataBinder
+        dataBinding.viewModel = viewModel
     }
 }

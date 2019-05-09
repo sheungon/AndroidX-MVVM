@@ -1,7 +1,7 @@
 package com.sotwtm.example.sub.fragment
 
 import android.app.Application
-import com.sotwtm.support.fragment.AppHelpfulFragmentDataBinder
+import com.sotwtm.support.fragment.AppHelpfulFragmentViewModel
 import com.sotwtm.support.fragment.FragmentMessenger
 import com.sotwtm.support.scope.FragmentScope
 import kotlinx.coroutines.Dispatchers
@@ -11,21 +11,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
- * Data binder for [SimpleDaggerFragment]
+ * Data binder of [NoDataBindingFragment]
  * @author sheungon
- * */
+ */
 @FragmentScope
-class SimpleDaggerFragmentDataBinder
+class NoDataBindingFragmentViewModel
 @Inject
 constructor(
     application: Application,
     private val messenger: FragmentMessenger
-) : AppHelpfulFragmentDataBinder(application) {
+) : AppHelpfulFragmentViewModel(application) {
 
-    fun onClickLoading() {
-        messenger.showLoadingDialog("")
+    override fun onResume() {
+        super.onResume()
+
+        messenger.showLoadingDialog("NoDataBindingFragment loading...")
         GlobalScope.launch(Dispatchers.Main) {
-            delay(1000)
+            delay(500)
             messenger.dismissLoadingDialog()
         }
     }

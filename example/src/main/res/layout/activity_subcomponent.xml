@@ -9,8 +9,8 @@
         <import type="com.sotwtm.example.R" />
 
         <variable
-            name="dataBinder"
-            type="com.sotwtm.example.sub.SubcomponentActivityDataBinder" />
+            name="viewModel"
+            type="com.sotwtm.example.sub.SubcomponentActivityViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -29,7 +29,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:selectTabAt="@={dataBinder.selectTabAt}" />
+                app:selectTabAt="@={viewModel.selectTabAt}" />
 
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/view_pager_control_machine"
@@ -37,7 +37,7 @@
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tab_layout"
-                app:setAdapter="@{dataBinder.pagerAdapter}"
+                app:setAdapter="@{viewModel.pagerAdapter}"
                 app:setTabLayout="@{tabLayout}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

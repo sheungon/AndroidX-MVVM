@@ -23,7 +23,7 @@ class ActivitiesClassMapModule {
 
     /**
      * @see SubcomponentActivitySubcomponent
-     * @see com.sotwtm.example.sub.SubcomponentActivityDataBinder
+     * @see com.sotwtm.example.sub.SubcomponentActivityViewModel
      * */
     @Provides
     @IntoMap

@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.databinding.ObservableField
 import com.sotwtm.example.sub.SubcomponentActivity
 import com.sotwtm.support.activity.ActivityMessenger
-import com.sotwtm.support.activity.AppHelpfulActivityDataBinder
+import com.sotwtm.support.activity.AppHelpfulActivityViewModel
 import com.sotwtm.support.activity.SimpleActivityNavigator
 import com.sotwtm.support.scope.ActivityScope
 import kotlinx.coroutines.Dispatchers
@@ -19,13 +19,13 @@ import javax.inject.Inject
  * @author sheungon
  * */
 @ActivityScope
-class SimpleDaggerActivityDataBinder
+class SimpleDaggerActivityViewModel
 @Inject
 constructor(
     application: Application,
     private val messenger: ActivityMessenger,
     private val navigator: SimpleActivityNavigator
-) : AppHelpfulActivityDataBinder(application) {
+) : AppHelpfulActivityViewModel(application) {
 
     val inputString: ObservableField<String> = ObservableField()
 

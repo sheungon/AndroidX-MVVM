@@ -13,9 +13,9 @@ class SubcomponentFragment : AppHelpfulDataBindingFragment<FragmentSubcomponentB
 
     override val layoutResId: Int = R.layout.fragment_subcomponent
     @Inject
-    override lateinit var dataBinder: SubcomponentFragmentDataBinder
+    override lateinit var viewModel: SubcomponentFragmentViewModel
 
     override fun initDataBinding(dataBinding: FragmentSubcomponentBinding, savedInstanceState: Bundle?) {
-        dataBinding.dataBinder = dataBinder
+        dataBinding.viewModel = viewModel
     }
 }

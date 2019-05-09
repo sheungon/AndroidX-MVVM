@@ -7,5 +7,5 @@ import javax.inject.Inject
 class NoDataBindingFragment : AppHelpfulFragment() {
     override val layoutResId: Int = R.layout.fragment_no_data_binding
     @Inject
-    override lateinit var dataBinder: NoDataBindingFragmentDataBinder
+    override lateinit var viewModel: NoDataBindingFragmentViewModel
 }

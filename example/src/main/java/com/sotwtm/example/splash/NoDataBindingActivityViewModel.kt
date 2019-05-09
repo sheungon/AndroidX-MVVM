@@ -3,7 +3,7 @@ package com.sotwtm.example.splash
 import android.app.Application
 import android.content.Intent
 import com.sotwtm.example.simple.SimpleDaggerActivity
-import com.sotwtm.support.activity.AppHelpfulActivityDataBinder
+import com.sotwtm.support.activity.AppHelpfulActivityViewModel
 import com.sotwtm.support.activity.SimpleActivityNavigator
 import com.sotwtm.support.scope.ActivityScope
 import kotlinx.coroutines.Dispatchers
@@ -18,12 +18,12 @@ import javax.inject.Inject
  */
 
 @ActivityScope
-class NoDataBindingActivityDataBinder
+class NoDataBindingActivityViewModel
 @Inject
 constructor(
     application: Application,
     private val navigator: SimpleActivityNavigator
-) : AppHelpfulActivityDataBinder(application) {
+) : AppHelpfulActivityViewModel(application) {
 
     override fun onResume() {
         super.onResume()

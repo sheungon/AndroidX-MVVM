@@ -56,7 +56,7 @@ private constructor(
      * @see supportedLocales
      * */
     @Synchronized
-    fun isSupportingLocale(locale: Locale): Boolean =
+    fun isSupportedLocale(locale: Locale): Boolean =
         with(supportedLocales.get()) {
             this == null
                     || isEmpty()
@@ -84,6 +84,6 @@ private constructor(
         SingletonHolder2<SotwtmSupportLib, Application, List<Locale>>(::SotwtmSupportLib) {
         const val PREF_KEY_APP_LOCALE = "AppLocale"
         const val PREF_KEY_SUPPORTED_LOCALES = "SupportedLocales"
-        const val SEPARATOR_LOCALE = ","
+        const val SEPARATOR_LOCALE = "|||"
     }
 }
