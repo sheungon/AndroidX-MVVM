@@ -18,7 +18,7 @@ import com.google.android.material.tabs.TabLayout
         method = "setupWithViewPager"
     )
 )
-object TabLayoutHelpfulBindingAdapter {
+object TabLayoutBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("selectTabAt")

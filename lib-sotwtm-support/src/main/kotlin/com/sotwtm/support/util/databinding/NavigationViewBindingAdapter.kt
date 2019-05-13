@@ -17,4 +17,4 @@ import com.google.android.material.navigation.NavigationView
         method = "setNavigationItemSelectedListener"
     )
 )
-object NavigationViewHelpfulBindingAdapter
+object NavigationViewBindingAdapter

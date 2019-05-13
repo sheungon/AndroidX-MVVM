@@ -47,10 +47,10 @@ abstract class AppHelpfulActivity
     HasSupportFragmentInjector {
 
     @Inject
-    internal lateinit var supportFragmentInjector: Lazy<DispatchingAndroidInjector<Fragment>?>
+    internal lateinit var xFragmentInjector: Lazy<DispatchingAndroidInjector<Fragment>?>
     @Suppress("DEPRECATION")
     @Inject
-    internal lateinit var frameworkFragmentInjector: Lazy<DispatchingAndroidInjector<android.app.Fragment>?>
+    internal lateinit var fragmentInjector: Lazy<DispatchingAndroidInjector<android.app.Fragment>?>
 
     /**Indicate if dagger injection if enabled to this activity.*/
     open val daggerEnabled: Boolean = true
@@ -374,11 +374,11 @@ abstract class AppHelpfulActivity
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment>? =
-        supportFragmentInjector.get()
+        xFragmentInjector.get()
 
     @Suppress("DEPRECATION")
     override fun fragmentInjector(): AndroidInjector<android.app.Fragment>? =
-        frameworkFragmentInjector.get()
+        fragmentInjector.get()
 
     override fun finish() {
         super.finish()

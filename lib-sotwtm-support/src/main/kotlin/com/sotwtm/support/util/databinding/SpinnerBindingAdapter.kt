@@ -13,4 +13,4 @@ import androidx.databinding.BindingMethods
 @BindingMethods(
     BindingMethod(type = Spinner::class, attribute = "setAdapter", method = "setAdapter")
 )
-object SpinnerHelpfulBindingAdapter
+object SpinnerBindingAdapter

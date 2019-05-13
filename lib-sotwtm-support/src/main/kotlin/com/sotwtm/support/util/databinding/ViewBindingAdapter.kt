@@ -10,7 +10,7 @@ import com.sotwtm.support.activity.AppHelpfulActivity
 import com.sotwtm.support.util.createSnackbar
 import com.sotwtm.util.Log
 
-object ViewHelpfulBindingAdapter {
+object ViewBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("menuId")

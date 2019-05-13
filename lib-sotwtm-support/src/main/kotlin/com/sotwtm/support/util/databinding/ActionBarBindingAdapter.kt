@@ -22,4 +22,4 @@ import androidx.databinding.BindingMethods
         method = "setDisplayHomeAsUpEnabled"
     )
 )
-object ActionBarHelpfulBindingAdapter
+object ActionBarBindingAdapter

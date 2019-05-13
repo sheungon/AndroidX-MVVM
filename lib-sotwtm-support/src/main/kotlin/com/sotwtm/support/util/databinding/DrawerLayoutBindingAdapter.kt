@@ -9,16 +9,13 @@ import androidx.drawerlayout.widget.DrawerLayout
  *
  * @author sheungon
  */
-object DrawerLayoutHelpfulBindingAdapter {
+object DrawerLayoutBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("addDrawerListener")
-    fun addDrawerListener(
-        drawerLayout: androidx.drawerlayout.widget.DrawerLayout,
-        listener: androidx.drawerlayout.widget.DrawerLayout.DrawerListener?
-    ) {
+    fun DrawerLayout.addDrawerListener(listener: DrawerLayout.DrawerListener?) {
         if (listener != null) {
-            drawerLayout.addDrawerListener(listener)
+            addDrawerListener(listener)
         }
     }
 }

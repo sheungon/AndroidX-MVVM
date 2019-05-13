@@ -3,6 +3,7 @@ package com.sotwtm.support.util.databinding
 import android.content.Context
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.annotation.ArrayRes
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingMethod
 import androidx.databinding.InverseBindingMethods
@@ -22,11 +23,11 @@ import androidx.databinding.adapters.ListenerUtil
         event = "android:selectedItemPositionAttrChanged"
     )
 )
-object AdapterViewHelpfulBindingAdapter {
+object AdapterViewBindingAdapter {
 
     @JvmStatic
     @BindingAdapter("itemsStringArrayRes")
-    fun AdapterView<*>.setItemsStringArrayRes(stringArrayRes: Int?) {
+    fun AdapterView<*>.setItemsStringArrayRes(@ArrayRes stringArrayRes: Int?) {
         val arrayAdapter = stringArrayRes?.let { arrayRes ->
             ListenerUtil.getListener<ArrayAdapter<String>>(this, arrayRes)
                 ?: run {

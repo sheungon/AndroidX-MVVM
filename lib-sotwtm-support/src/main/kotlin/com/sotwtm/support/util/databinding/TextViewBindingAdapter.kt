@@ -15,7 +15,7 @@ import androidx.databinding.BindingAdapter
  *
  * @author sheungon
  */
-object TextViewHelpfulBindingAdapter {
+object TextViewBindingAdapter {
 
     @JvmStatic
     @Synchronized

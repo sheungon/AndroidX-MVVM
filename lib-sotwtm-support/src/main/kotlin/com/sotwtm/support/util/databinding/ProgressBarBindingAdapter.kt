@@ -15,7 +15,7 @@ import androidx.databinding.BindingAdapter
  *
  * @author sheungon
  */
-object ProgressBarHelpfulBindingAdapter {
+object ProgressBarBindingAdapter {
 
     @JvmStatic
     @BindingAdapter(value = ["setProgressColorRes"])

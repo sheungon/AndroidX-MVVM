@@ -14,4 +14,4 @@ import androidx.databinding.BindingMethods
 @BindingMethods(
     BindingMethod(type = Button::class, attribute = "selected", method = "setSelected")
 )
-object ButtonHelpfulBindingAdapter
+object ButtonBindingAdapter

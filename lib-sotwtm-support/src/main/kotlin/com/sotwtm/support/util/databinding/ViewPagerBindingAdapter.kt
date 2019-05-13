@@ -9,7 +9,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 
 /**
- * DataBinding methods and BindingMethods created for easier implementation for Android DataBinding.
+ * BindingAdapter methods and BindingMethods created for easier implementation for Android DataBinding.
  * Implementation for [ViewPager]
  *
  * @author sheungon
@@ -26,7 +26,7 @@ import com.google.android.material.tabs.TabLayout
         method = "setOffscreenPageLimit"
     )
 )
-object ViewPagerAppHelpfulDataBinding {
+object ViewPagerBindingAdapter {
 
     @JvmStatic
     @BindingAdapter(
