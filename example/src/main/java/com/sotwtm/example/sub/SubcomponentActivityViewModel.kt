@@ -8,7 +8,7 @@ import com.sotwtm.support.scope.ActivityScope
 import javax.inject.Inject
 
 /**
- * This databinder get its own data from subcomponent
+ * This view model get its own data from subcomponent
  * @see com.sotwtm.example.contributor.ActivitiesClassMapModule
  * @see com.sotwtm.example.sub.SubcomponentActivitySubcomponent
  * @author sheungon
