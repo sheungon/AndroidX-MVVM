@@ -57,7 +57,7 @@ dependencies {
     implementation project(':lib-sotwtm-support')
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-$versions.kotlin_env:$versions.kotlin_plugin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-$versions.kotlin_env:$versions.kotlin"
 
     // Kotlin coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlin_coroutines"

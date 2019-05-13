@@ -6,8 +6,6 @@
 
         <import type="android.view.View" />
 
-        <import type="com.sotwtm.support.util.databinding.AppHelpfulDataBindingUtil" />
-
         <variable
             name="viewModel"
             type="com.sotwtm.support.fragment.dialog.LoadingDialogFragmentViewModel" />
